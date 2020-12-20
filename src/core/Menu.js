@@ -3,15 +3,16 @@ import { Link, withRouter } from "react-router-dom";
 
 const isActive = (history, path) => {
     if(history.location.pathname === path) {
-        return { color: "#ff9900"};
+        return { color: "#006400"};
     } else {
         return { color: "#ffffff"};
     }
 };
 
 const Menu = ({history}) => (
+    //history is a props destructured = props.history
     <div>
-       <ul className="nav nav-tabs bg-primary">
+       <ul className="nav nav-tabs bg-dark">
          <li className="nav-item">
            <Link className="nav-link" style={isActive(history, "/")} to="/">
               Home
