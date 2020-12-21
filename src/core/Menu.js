@@ -2,36 +2,36 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 
 const isActive = (history, path) => {
-    if(history.location.pathname === path) {
-        return { color: "#006400"};
-    } else {
-        return { color: "#ffffff"};
-    }
+  if (history.location.pathname === path) {
+    return { color: "#006400" };
+  } else {
+    return { color: "#ffffff" };
+  }
 };
 
-const Menu = ({history}) => (
-    //history is a props destructured = props.history
-    <div>
-       <ul className="nav nav-tabs bg-dark">
-         <li className="nav-item">
-           <Link className="nav-link" style={isActive(history, "/")} to="/">
-              Home
+const Menu = ({ history }) => (
+  //history is a props destructured = props.history
+  <div>
+    <ul className="nav nav-tabs bg-dark">
+      <li className="nav-item">
+        <Link className="nav-link" style={isActive(history, "/")} to="/">
+          Home
            </Link>
-         </li>
+      </li>
 
-         <li className="nav-item">
-           <Link className="nav-link" style={isActive(history, "/signin")} to="/signin">
-              Signin
+      <li className="nav-item">
+        <Link className="nav-link" style={isActive(history, "/signin")} to="/signin">
+          Signin
            </Link>
-         </li>
+      </li>
 
-         <li className="nav-item">
-           <Link className="nav-link" style={isActive(history, "/signup")} to="/signup">
-              Signup
+      <li className="nav-item">
+        <Link className="nav-link" style={isActive(history, "/signup")} to="/signup">
+          Signup
            </Link>
-         </li>
-       </ul>
-    </div>
+      </li>
+    </ul>
+  </div>
 )
 
 export default withRouter(Menu);
