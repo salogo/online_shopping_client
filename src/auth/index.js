@@ -36,3 +36,27 @@ export const signup = user => {
         console.log(err)
       })
   }; 
+
+  // save user info(token) in local storage
+  export const authenticate = (data, next) => {
+      if(typeof window !== "undefined") {
+          //save the data by name : "jwt"
+          localStorage.setItem("jwt", JSON.stringify(data))
+          next()
+      }
+  }
+
+  export const signout = (next) => {
+      if (typeof window !== "undefined") {
+          localStorage.removeItem("jwt");// clear the local storage = remove token from local storage
+          next();
+          //then request to the backend to logout 
+          return fetch(`${API}/signout`, {
+              method: "GET",
+          })
+          .then(response => {
+              console.log("signout", response)
+          })
+          .catch(err => console.log(err))
+      }
+  }
