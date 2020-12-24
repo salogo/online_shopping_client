@@ -60,3 +60,16 @@ export const signup = user => {
           .catch(err => console.log(err))
       }
   }
+// use isAutenticated to hide signup and signin when YOU ARE login or hide signout if not loged in
+  export const isAuthenticated = () => {
+      if(typeof window == "undefined") {
+          return false;
+      }
+      if(localStorage.getItem("jwt")) {
+          return JSON.parse(localStorage.getItem("jwt"));
+      } else {
+          return false;
+      }
+  };
+
+ 
