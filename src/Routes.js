@@ -6,7 +6,8 @@ import Home from "./core/Home";
 import PrivateRoute from "./auth/PrivateRoute"; //only logned in user can go to that route
 import UserDashboard from "./user/UserDashboard";
 import AdminRoute from "./auth/AdminRoute";
-import AdminDashboard from "./user/AdminDashboard"
+import AdminDashboard from "./user/AdminDashboard";
+import AddCategory from "./admin/AddCategory";
 
 
 const Routes = () => {
@@ -19,6 +20,7 @@ const Routes = () => {
              <Route path="/signup" exact component={Signup} />
              <PrivateRoute path="/user/dashboard" exact component={UserDashboard} /> 
              <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} /> 
+             <AdminRoute path="/create/category" exact component={AddCategory} /> 
            </Switch>
         </BrowserRouter>
     );
