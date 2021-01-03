@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { isAuthenticated, signout } from "../auth";
 
@@ -17,26 +17,33 @@ const Menu = ({ history }) => (
       <li className="nav-item">
         <Link className="nav-link" style={isActive(history, "/")} to="/">
           Home
-           </Link>
+         </Link>
       </li>
-       
+
+           
+      <li className="nav-item">
+      <Link className="nav-link" style={isActive(history, "/shop")} to="/shop">
+        Shop
+       </Link>
+      </li>
+
       {isAuthenticated() && isAuthenticated().user.role === 0 && (
-      <li className="nav-item">
-      <Link className="nav-link" style={isActive(history, "/user/dashboard")} to="/user/dashboard">
-        Dashboard
+        <li className="nav-item">
+          <Link className="nav-link" style={isActive(history, "/user/dashboard")} to="/user/dashboard">
+            Dashboard
          </Link>
-    </li>
-    )}
+        </li>
+      )}
 
-    {isAuthenticated() && isAuthenticated().user.role === 1 && (
-      <li className="nav-item">
-      <Link className="nav-link" style={isActive(history, "/admin/dashboard")} to="/admin/dashboard">
-        Dashboard
+      {isAuthenticated() && isAuthenticated().user.role === 1 && (
+        <li className="nav-item">
+          <Link className="nav-link" style={isActive(history, "/admin/dashboard")} to="/admin/dashboard">
+            Dashboard
          </Link>
-    </li>
-    )}
+        </li>
+      )}
 
-    {/* 
+      {/* 
        if user is not sAuthenticated we are showing signin and signup
     */}
 
@@ -47,8 +54,8 @@ const Menu = ({ history }) => (
               Signin
            </Link>
           </li>
-          
-            <li className="nav-item">
+
+          <li className="nav-item">
             <Link className="nav-link" style={isActive(history, "/signup")} to="/signup">
               Signup
            </Link>
@@ -56,21 +63,21 @@ const Menu = ({ history }) => (
 
         </Fragment>
       )}
-       
+
       {/* 
        if user is  sAuthenticated we are showing sigout
     */}
-      { isAuthenticated() && (
+      {isAuthenticated() && (
         <li className="nav-item">
-        <span
-          className="nav-link"
-          style={{ cursor: "pointer", color: "#ffffff" }}
-          onClick={() => signout(() => {
-            history.push("/")
-          })}>
-          Signout
+          <span
+            className="nav-link"
+            style={{ cursor: "pointer", color: "#ffffff" }}
+            onClick={() => signout(() => {
+              history.push("/")
+            })}>
+            Signout
          </span>
-      </li>
+        </li>
       )}
 
     </ul>
