@@ -7,35 +7,39 @@ import RadioBox from "./RadioBox";
 import { prices } from "./fixedPrices";
 
 const Shop = () => {
-    const  [myFilters, setMyFilters] = useState({
-        filters: { category: [], price: []}
-    })
+    const [myFilters, setMyFilters] = useState({
+        filters: { category: [], price: [] }
+    });
     const [categories, setCategories] = useState([]);
     const [error, setError] = useState(false);
     const [limit, setLimit] = useState(6);
     const [skip, setSkip] = useState(0);
-    const [filteredResults, setFilteredResults] = useState(0);
+    const [size, setSize] = useState(0);
+    const [filteredResults, setFilteredResults] = useState([]);
 
     const init = () => {
         getCategories().then(data => {
             if (data.error) {
                 setError(data.error);
             } else {
-                setCategories(data)
+                setCategories(data);
             }
         });
     };
 
-    const loadFilteredResults = (newFilters) => {
-       // console.log(newFilters)
-       getFilteredProducts(skip, limit, newFilters).then(data => {
-           if (data.error) {
-               setError(data.error)
-           } else {
-               setFilteredResults(data)
-           }
-       })
-    }
+    const loadFilteredResults = newFilters => {
+        // console.log(newFilters);
+        getFilteredProducts(skip, limit, newFilters).then(data => {
+            if (data.error) {
+                setError(data.error);
+            } else {
+                setFilteredResults(data.data);
+                setSize(data.size);
+                setSkip(0);
+            }
+        });
+    };
+
 
     useEffect(() => {
         init();
@@ -43,16 +47,15 @@ const Shop = () => {
     }, []);
 
     const handleFilters = (filters, filterBy) => {
-        //console.log("Shop Component:", filters, filterBy);
-        const newFilters = { ...myFilters};
+        // console.log("SHOP", filters, filterBy);
+        const newFilters = { ...myFilters };
         newFilters.filters[filterBy] = filters;
-        
-        if (filterBy == "price") {
+
+        if (filterBy === "price") {
             let priceValues = handlePrice(filters);
             newFilters.filters[filterBy] = priceValues;
-
         }
-        loadFilteredResults(myFilters.filters)
+        loadFilteredResults(myFilters.filters);
         setMyFilters(newFilters);
     };
 
@@ -68,33 +71,47 @@ const Shop = () => {
         return array;
     };
 
-
     return (
         <Layout
             title="Shop Page"
-            description="Search"
+            description="Search and find books of your choice"
             className="container-fluid"
         >
             <div className="row">
                 <div className="col-4">
                     <h4>Filter by categories</h4>
                     <ul>
-                        <Checkbox categories={categories}
-                            handleFilters={filters => handleFilters(filters, "category")}
+                        <Checkbox
+                            categories={categories}
+                            handleFilters={filters =>
+                                handleFilters(filters, "category")
+                            }
                         />
                     </ul>
 
                     <h4>Filter by price range</h4>
                     <div>
-                        <RadioBox prices={prices}
-                            handleFilters={filters => handleFilters(filters, "price")}
+                        <RadioBox
+                            prices={prices}
+                            handleFilters={filters =>
+                                handleFilters(filters, "price")
+                            }
                         />
                     </div>
                 </div>
-                <div className="col-8">{JSON.stringify(filteredResults)}</div>
+
+                <div className="col-8">
+                    <h2 className="mb-4">Products</h2>
+                    <div className="row">
+                        {filteredResults.map((product, i) => (
+                            <Card key={i} product={product} />
+                        ))}
+                    </div>
+
+                </div>
             </div>
         </Layout>
-    )
-}
+    );
+};
 
 export default Shop;
