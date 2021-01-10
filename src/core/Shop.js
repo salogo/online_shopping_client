@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import Card from "./Card";
@@ -40,6 +41,32 @@ const Shop = () => {
         });
     };
 
+    const loadMore = () => {
+        let toSkip = skip + limit;
+        // console.log(newFilters);
+        getFilteredProducts(toSkip, limit, myFilters.filters).then(data => {
+            if (data.error) {
+                setError(data.error);
+            } else {
+                setFilteredResults([...filteredResults, ...data.data]);
+                setSize(data.size);
+                setSkip(toSkip);
+            }
+        });
+    };
+
+    
+    const loadMoreButton = () => {
+        return (          
+            size > 0 && size >= limit && (
+                <button onClick={loadMore} className="btn btn-warning mb-5">
+                    Load more
+                </button>
+            )
+        )
+    };
+
+
 
     useEffect(() => {
         init();
@@ -74,7 +101,7 @@ const Shop = () => {
     return (
         <Layout
             title="Shop Page"
-            description="Search and find books of your choice"
+            description="Search "
             className="container-fluid"
         >
             <div className="row">
@@ -107,6 +134,8 @@ const Shop = () => {
                             <Card key={i} product={product} />
                         ))}
                     </div>
+                    <hr />
+                    {loadMoreButton()}
 
                 </div>
             </div>

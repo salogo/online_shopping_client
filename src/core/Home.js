@@ -3,6 +3,7 @@ import Layout from "./Layout";
 import { getProducts } from "./apiCore";
 import Card from "./Card";
 
+
 const Home = () => {
     const [productsBySell, setProductsBySell] = useState([])
     const [productsByArrival, setProductsByArrival] = useState([])
@@ -48,7 +49,7 @@ const Home = () => {
                     <Card key={i} product={product} />
                 ))}
             </div>
-
+                 
         </Layout>
     )
 };
