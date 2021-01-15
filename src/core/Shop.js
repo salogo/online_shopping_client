@@ -99,7 +99,7 @@ const Shop = () => {
     return (
         <Layout
             title="Shop Page"
-            description="Search "
+            description=""
             className="container-fluid"
         >
             <div className="row">

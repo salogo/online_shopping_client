@@ -1,10 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import { Link, Redirect } from "react-router-dom";
 import ShowImage from "./ShowImage";
 import moment from "moment";
+import { addItem } from "./cartHelpers";
 
 
 const Cart = ({ product, showViewProductButton = true }) => {
+  const [ redirect, setRedirect ] = useState(false)
 
   const showViewButton = (showViewProductButton) => {
     return (
@@ -19,9 +21,21 @@ const Cart = ({ product, showViewProductButton = true }) => {
     )
   }
 
+  const addToCart = () => {
+    addItem(product, () => {
+       setRedirect(true)
+    })
+  }
+
+  const shouldRedirect = redirect => {
+    if(redirect) {
+      return <Redirect to="/cart"  />
+    }
+  }
+
   const showAddToCartButton = () => {
     return (
-      <button className="btn btn-outline-warning mt-2 mb-2">
+      <button onClick={addToCart} className="btn btn-outline-warning mt-2 mb-2">
         Add to Card
       </button>
     );
@@ -51,6 +65,9 @@ const Cart = ({ product, showViewProductButton = true }) => {
     <div className="card">
       <div className="card-header name">{product.name}</div>
       <div className="card-body">
+
+      {shouldRedirect(redirect)}
+      
         <ShowImage item={product} url="product" />
         <p>{product.description.substring(0, 100)}</p>
         <p>${product.price}</p>
