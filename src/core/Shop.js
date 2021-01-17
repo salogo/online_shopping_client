@@ -5,6 +5,9 @@ import { getCategories, getFilteredProducts } from "./apiCore";
 import Checkbox from "./Checkbox";
 import RadioBox from "./RadioBox";
 import { prices } from "./fixedPrices";
+import Scroll from "./Scroll";
+
+
 
 const Shop = () => {
     const [myFilters, setMyFilters] = useState({
@@ -102,16 +105,20 @@ const Shop = () => {
             description=""
             className="container-fluid"
         >
+        
+        <Scroll>
+
             <div className="row">
                 <div className="col-4">
                     <h4>Filter by categories</h4>
                     <ul>
+                    
                         <Checkbox
                             categories={categories}
                             handleFilters={filters =>
                                 handleFilters(filters, "category")
                             }
-                        />
+                        />                  
                     </ul>
 
                     <h4>Filter by price range</h4>
@@ -123,7 +130,7 @@ const Shop = () => {
                             }
                         />
                     </div>
-                </div>
+                </div>                 
 
                 <div className="col-8">
                     <h2 className="mb-4">Products</h2>
@@ -139,6 +146,8 @@ const Shop = () => {
 
                 </div>
             </div>
+
+            </Scroll>
         </Layout>
     );
 };

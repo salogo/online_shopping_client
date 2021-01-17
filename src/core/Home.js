@@ -3,6 +3,7 @@ import Layout from "./Layout";
 import { getProducts } from "./apiCore";
 import Card from "./Card";
 import Search from "./Search";
+import Scroll from "./Scroll";
 
 
 const Home = () => {
@@ -39,7 +40,9 @@ const Home = () => {
         <Layout title="Home Page" description="Node React E-commerce App" className="container-fluid">
 
             <Search />
-
+            
+            <Scroll>
+            
             <h2 className="mb-4">New Arrival</h2>
             <div className="row">
                 {productsByArrival.map((product, i) => (
@@ -57,6 +60,8 @@ const Home = () => {
                     </div>
                 ))}
             </div>
+
+            </Scroll>
 
         </Layout>
     )

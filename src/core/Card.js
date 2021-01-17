@@ -67,7 +67,7 @@ const Cart = ({ product, showViewProductButton = true }) => {
       <div className="card-body">
 
       {shouldRedirect(redirect)}
-      
+
         <ShowImage item={product} url="product" />
         <p>{product.description.substring(0, 100)}</p>
         <p>${product.price}</p>
@@ -77,7 +77,7 @@ const Cart = ({ product, showViewProductButton = true }) => {
         <p>
           Added on {moment(product.createdAt).fromNow()}
         </p>
-
+        
         {showStock(product.quantity)}
         <br />
 
