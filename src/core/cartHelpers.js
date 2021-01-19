@@ -26,3 +26,12 @@ export const itemTotal = () => {
     }
     return 0;
 };
+
+export const getCart = () => {
+    if (typeof window !== "undefined") {
+        if (localStorage.getItem("cart")) {
+            return JSON.parse(localStorage.getItem("cart"));
+        }
+    }
+    return [];// if we don't get any item we return empty array
+};

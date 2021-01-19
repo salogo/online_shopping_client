@@ -1,12 +1,12 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import ShowImage from "./ShowImage";
 import moment from "moment";
 import { addItem } from "./cartHelpers";
 
 
-const Cart = ({ product, showViewProductButton = true }) => {
-  const [ redirect, setRedirect ] = useState(false)
+const Cart = ({ product, showViewProductButton = true, showAddToCartButton = true }) => {
+  const [redirect, setRedirect] = useState(false)
 
   const showViewButton = (showViewProductButton) => {
     return (
@@ -23,21 +23,25 @@ const Cart = ({ product, showViewProductButton = true }) => {
 
   const addToCart = () => {
     addItem(product, () => {
-       setRedirect(true)
+      setRedirect(true)
     })
   }
 
   const shouldRedirect = redirect => {
-    if(redirect) {
-      return <Redirect to="/cart"  />
+    if (redirect) {
+      return <Redirect to="/cart" />
     }
   }
 
-  const showAddToCartButton = () => {
+  const showAddToCart = showAddToCartButton => {
     return (
-      <button onClick={addToCart} className="btn btn-outline-warning mt-2 mb-2">
-        Add to Card
-      </button>
+      showAddToCartButton && (
+        <button onClick={addToCart}
+          className="btn btn-outline-warning mt-2 mb-2"
+        >
+          Add to Card
+        </button>
+      )
     );
   };
 
@@ -53,20 +57,20 @@ const Cart = ({ product, showViewProductButton = true }) => {
 
   const showStock = quantity => {
     return quantity > 0 ? (
-      <span  className="btn btn-success mt-2 mb-2">In Stock </span> 
+      <span className="btn btn-success mt-2 mb-2">In Stock </span>
     ) : (
-      <span  className="btn btn-danger mt-2 mb-2">Out of Stock </span>  
-    );
+        <span className="btn btn-danger mt-2 mb-2">Out of Stock </span>
+      );
   };
-  
+
 
   return (
 
-    <div className="card">
-      <div className="card-header name">{product.name}</div>
-      <div className="card-body">
+    <div className="card tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5" style={{ borderRadius: "7%" }}>
+      <div className="card-header name ">{product.name}</div>
+      <div className="card-body" >
 
-      {shouldRedirect(redirect)}
+        {shouldRedirect(redirect)}
 
         <ShowImage item={product} url="product" />
         <p>{product.description.substring(0, 100)}</p>
@@ -77,13 +81,13 @@ const Cart = ({ product, showViewProductButton = true }) => {
         <p>
           Added on {moment(product.createdAt).fromNow()}
         </p>
-        
+
         {showStock(product.quantity)}
         <br />
 
         {showViewButton(showViewProductButton)}
 
-        {showAddToCartButton()}
+        {showAddToCart(showAddToCartButton)}
 
       </div>
     </div>
