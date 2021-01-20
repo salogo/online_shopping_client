@@ -16,5 +16,3 @@ const Layout =({title = "Title",description = "Description",className,children})
 );
 
 export default Layout;
-
-//style={{backgroundColor: "#F0FFFF"}}
