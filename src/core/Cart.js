@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { getCart } from './cartHelpers';
 import Card from './Card';
 import Checkout from './Checkout';
+
  
 const Cart = () => {
   const [items, setItems] = useState([]);
@@ -45,14 +46,20 @@ const Cart = () => {
  
   return (
     <Layout title="Shopping Cart" description="Checkout now!" className="container-fluid">
-      <div className="row">
+
+
+      <div className="row"> 
+      
         <div className="col-6">{items.length > 0 ? showItems(items) : noItemsMessage()}</div>
         <div className="col-6">
-          <h2 className="mb-4">Your Cart Summary</h2>
+        
+          <h2 className="mb-4">Ready to checkout ? click Pay </h2>
           <hr />
           <Checkout products={items} />
         </div>
+
       </div>
+
     </Layout>
   );
 };
