@@ -4,8 +4,9 @@ import { getProducts, getBraintreeClientToken, processPayment } from "./apiCore"
 import Card from "./Card";
 import { emptyCart } from "./cartHelpers";
 import { isAuthenticated } from "../auth";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Dropin from "braintree-web-drop-in-react";
+
 
 
 
@@ -51,8 +52,11 @@ const Checkout = ({ products, setRun = f => f, run = undefined  }) => {
                 </Link>
             )
     }
+//
+function refreshPage() {
+    window.location.reload(false);
+  }
 
-    
     const buy = () => {
         setData({ loading: true});
         //send the nonce to your server
@@ -77,9 +81,12 @@ const Checkout = ({ products, setRun = f => f, run = undefined  }) => {
               // empty cart
               emptyCart(() => {
                 setRun(!run); // run useEffect in parent Cart
+                
                 console.log('payment success and empty cart');
                 setData({loading: false});
-            });
+            })
+            // to refrech the page after the cart has been emptied
+            refreshPage()
               // create order
 
            })
@@ -110,7 +117,7 @@ const Checkout = ({ products, setRun = f => f, run = undefined  }) => {
                        }
                   }} 
                   onInstance={instance => (data.instance = instance)}/>
-                  <button onClick={buy} className="btn btn-success btn-block">Pay</button>
+                  <button onClick={buy}  className="btn btn-success btn-block">Pay</button>
               </div>
           ) : null}
         </div>
