@@ -85,6 +85,7 @@ export const removeItem = (productId) => {
 export const emptyCart = next => {
     if (typeof window !== 'undefined') {
         localStorage.removeItem('cart');
+        window.location.reload(false);//to refrech the page
         next();
     }
 };
