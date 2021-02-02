@@ -100,14 +100,15 @@ const Shop = () => {
     };
 
     return (
+        
         <Layout
             title="Shop Page"
             description=""
             className="container-fluid"
         >
         
-        <Scroll>
-
+        
+          <Scroll>
             <div className="row">
                 <div className="col-4">
                     <h4>Filter by categories</h4>
@@ -146,9 +147,9 @@ const Shop = () => {
 
                 </div>
             </div>
-
             </Scroll>
         </Layout>
+    
     );
 };
 
