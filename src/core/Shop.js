@@ -130,8 +130,9 @@ const Shop = () => {
                                 handleFilters(filters, "price")
                             }
                         />
+
                     </div>
-                </div>                 
+                </div>                    
 
                 <div className="col-8">
                     <h2 className="mb-4">Products</h2>
