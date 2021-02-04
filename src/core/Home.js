@@ -60,7 +60,6 @@ const Home = () => {
                     </div>
                 ))}
             </div>
-
             </Scroll>
 
         </Layout>
