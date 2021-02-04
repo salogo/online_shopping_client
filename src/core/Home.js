@@ -37,7 +37,7 @@ const Home = () => {
     }, [])
 
     return (
-        <Layout title="Home Page" description="Online Shopping App" className="container-fluid ">
+        <Layout title="Home Page" description="Online Shopping App" className="container-fluid text-primary ">
 
             <Search />
             

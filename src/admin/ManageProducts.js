@@ -36,7 +36,7 @@ const ManageProducts = () => {
   return (
     <Layout
       title="Manage Products"
-      description="Perform CRUD on products"
+      description="DELETE OR UPDATE PRODUCTS !"
       className="container-fluid"
     >
       <div className="row">

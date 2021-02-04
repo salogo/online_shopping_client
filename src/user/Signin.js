@@ -11,8 +11,11 @@ const Signin = () => {
   redirectToReferrer: false
  });
 
+
+
   const { email, password, loading, error, redirectToReferrer } = values;
   const { user } = isAuthenticated();
+
 
   const handleChange = name => event => {
     setValues({ ...values, error: false, [name]: event.target.value });
@@ -38,6 +41,7 @@ const Signin = () => {
       });
   };
 
+ 
   const signInForm = () => (
     <form>
 
@@ -58,6 +62,7 @@ const Signin = () => {
 
     </form>
   );
+
 
   const showError = () => (
     <div className="alert alert-danger"

@@ -45,7 +45,7 @@ const Cart = () => {
   );
  
   return (
-    <Layout title="Shopping Cart" description="Checkout now!" className="container-fluid">
+    <Layout title="Shopping Cart" description="Checkout now!" className="container-fluid text-primary">
 
 
       <div className="row"> 
