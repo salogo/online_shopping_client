@@ -77,10 +77,11 @@ const Search = () => {
     };
     // function with  {} need return = multiple elements ; with () don't need return = single element
     const searchForm = () => (
-        <form onSubmit={searchSubmit} >
-            <span className="input-group-text b">
-                <div className="input-group input-group-lg">
-                    <div className="input-group-prepend ">
+        <form onSubmit={searchSubmit} className="row">
+
+            <span className="input-group-text b    bg-primary">
+                <div className="input-group input-group-lg bg-info">
+                    <div className="input-group-prepend  bg-info">
                         <select className="btn mr-2" onChange={handleChange("category")}>
                             <option value="All">ALL</option>
                             {categories.map((c, i) => (
@@ -92,13 +93,13 @@ const Search = () => {
                     </div>
                     <input
                         type="search"
-                        className="form-control "
+                        className="form-control  bg-info "
                         onChange={handleChange("search")}
                         placeholder="Search by name"
                     />
                 </div>
-                <div className="btn input-group-append" style={{ border: "none" }}>
-                    <button className="input-group-text ">
+                <div className="btn input-group-append bg-info" style={{ border: "none" }}>
+                    <button className="input-group-text bg-info">
                         {/*Serch icon  */}
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -107,6 +108,7 @@ const Search = () => {
                     </button>
                 </div>
             </span>
+
         </form>
     )
 
@@ -114,11 +116,11 @@ const Search = () => {
     return (
         <div className="row">
             <div className="container mb-3">
-                {searchForm()}
+            {searchForm()}
             </div>
             <div className="container-fuid mb-3">
-                {searchedProducts(results)}
-            </div>
+             {searchedProducts(results)}
+        </div>
         </div>
     );
 };

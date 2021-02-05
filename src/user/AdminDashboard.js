@@ -9,8 +9,8 @@ const AdminDashboard = () => {
 
     const adminLinks = () => {
         return (
-            <div className="card">
-                <h4 className="card-header">Admin Settings</h4>
+            <div className="card border-primary">
+                <h4 className="card-header text-primary">Admin Settings</h4>
                 <ul className="list-group">
                     <li className="list-group-item">
                         <Link className="nav-link" to="/create/category">Create Category</Link>
@@ -21,18 +21,18 @@ const AdminDashboard = () => {
                             Create Product
                       </Link>
                     </li>
-                     
-                    <li className="list-group-item">
-                       <Link className="nav-link" to="/admin/orders">
-                          View Orders
-                        </Link>
-                   </li>
 
-                   <li className="list-group-item">
-                   <Link className="nav-link" to="/admin/products">
-                      Manage Products
+                    <li className="list-group-item">
+                        <Link className="nav-link" to="/admin/orders">
+                            View Orders
+                        </Link>
+                    </li>
+
+                    <li className="list-group-item">
+                        <Link className="nav-link" to="/admin/products">
+                            Manage Products
                     </Link>
-               </li>
+                    </li>
 
                 </ul>
             </div>
@@ -41,8 +41,8 @@ const AdminDashboard = () => {
 
     const adminInfo = () => {
         return (
-            <div className="card mb-5">
-                <h3 className="card-header">User Profile</h3>
+            <div className="card mb-5  text-primary border-primary">
+                <h3 className="card-header ">User Profile</h3>
                 <ul className="list-group">
                     <li className="list-group-item">{name}</li>
                     <li className="list-group-item">{email}</li>
@@ -55,12 +55,12 @@ const AdminDashboard = () => {
 
     return (
         <Layout title="Dashboard" description={`Hello ${name}`} className="container-fluid">
-            <div className="row">
-                <div className="col-3">
-                    {adminLinks()}
-                </div>
-                <div className="col-9">
+            <div className="row ">
+                <div className="col-3 ">
                     {adminInfo()}
+                </div>
+                <div className="col-9 text-primary">
+                    {adminLinks()}
                 </div>
             </div>
 

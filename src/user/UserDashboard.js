@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth/index";
 import { Link } from "react-router-dom";
@@ -6,17 +6,17 @@ import { getPurchaseHistory } from "./apiUser";
 import moment from "moment";
 
 const Dashboard = () => {
-   const [ history, setHistory ] = useState([])
+    const [history, setHistory] = useState([])
 
-    const { user: {_id, name, email, rol } } = isAuthenticated();
+    const { user: { _id, name, email, rol } } = isAuthenticated();
     const token = isAuthenticated().token;
-     
+
     const init = (userId, token) => {
         getPurchaseHistory(userId, token).then(data => {
             if (data.error) {
                 console.log(data.error)
             } else {
-               setHistory(data)
+                setHistory(data)
             }
         })
     }
@@ -89,13 +89,15 @@ const Dashboard = () => {
     };
 
     return (
-        <Layout title="Dashboard" description={`Hello ${name}`} className="container-fluid">
-            <div className="row">
-                <div className="col-3">
+        <Layout title="Dashboard" description={`Hello ${name}`} className="container-fluid  ">
+            <div className="row d-flex justify-content-center  text-primary">
+                <div className="col-4">
+                    {userInfo()}
+                </div>
+                <div className="col-4">
                     {userLinks()}
                 </div>
-                <div className="col-9">
-                    {userInfo()}
+                <div className="col-4">
                     {purchaseHistory(history)}
                 </div>
             </div>
