@@ -1,4 +1,13 @@
-Home page:
+Full-Stack, Ecommerce website : Online-Shopping
+
+
+A admin can create a category, add a product to category, view all the orders, update or delete the product
+
+A user can search the products by name, view product and see all the related products, add to the cart and remove from the cart, adjust quantity, signup and signin to make a payment by using credit card or PayPal, provide a delivery address for the shipping
+
+Built with Javascript, React,CSS, Bootstrap, Node, Express, MongoDB
+
+#
 ![image](https://user-images.githubusercontent.com/54459398/107093851-9cb40e80-67cb-11eb-8ddc-22d0e66cfdbd.png)
 #
 ![image](https://user-images.githubusercontent.com/54459398/107094041-f4527a00-67cb-11eb-9376-3847a3d044bb.png)
