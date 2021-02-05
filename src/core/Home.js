@@ -50,7 +50,7 @@ const Home = () => {
     }
 
     return (
-        <Layout title="" description="" className="container-fluid text-primary ">
+        <Layout title="" description="ZAKARIA SALOGO FULL STACK DEVELOPER" className="container-fluid text-primary ">
             <Scroll>
 
                 {logo()}
