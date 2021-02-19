@@ -14,6 +14,7 @@ Built with Javascript, React,CSS, Bootstrap, Node, Express, MongoDB
 #
 ![image](https://user-images.githubusercontent.com/54459398/107094125-1fd56480-67cc-11eb-8cd7-fa83a11476c5.png)
 #
+A user can filter the products by categories or by price range
 ![image](https://user-images.githubusercontent.com/54459398/107094219-41365080-67cc-11eb-82f6-4a63daa1f914.png)
 #
 ![image](https://user-images.githubusercontent.com/54459398/107094310-6925b400-67cc-11eb-9282-76ee06d0d4d3.png)
