@@ -17,9 +17,10 @@ Built with Javascript, React,CSS, Bootstrap, Node, Express, MongoDB
 A user can filter the products by categories or by price range
 ![image](https://user-images.githubusercontent.com/54459398/107094219-41365080-67cc-11eb-82f6-4a63daa1f914.png)
 #
+A user can view a product and all related products
 ![image](https://user-images.githubusercontent.com/54459398/107094310-6925b400-67cc-11eb-9282-76ee06d0d4d3.png)
 #
-
+A user can increase or decrease the number of any selected product and proceed with the payment
 ![image](https://user-images.githubusercontent.com/54459398/107094371-82c6fb80-67cc-11eb-8ea5-4683dc7a7498.png)
 
 #
