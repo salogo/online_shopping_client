@@ -8,7 +8,7 @@ A user can search the products by name, view product and see all the related pro
 Built with Javascript, React,CSS, Bootstrap, Node, Express, MongoDB
 #
 
-Live : proud-ground.surge.sh
+Live : http://proud-ground.surge.sh/
 
 #
 
