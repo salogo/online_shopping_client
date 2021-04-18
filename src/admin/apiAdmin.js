@@ -161,3 +161,28 @@ export const deleteCategory = (categoryId, userId , token) => {
   })
   .catch(err => console.log(err));
 };
+
+export const UpdateCategor = (categoryId, userId , token, category) => {
+  return fetch(`${API}/category/${categoryId}/${userId}`, {
+    method: "put",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: category
+  })
+  .then(response => {
+    return response.json();
+  })
+  .catch(err => console.log(err));
+};
+//"/category/:categoryId"
+export const getCategory = (categoryId) => {
+  return fetch(`${API}/category/${categoryId}`, {
+    method: "GET"
+  })
+  .then(response => {
+    return response.json();
+  })
+  .catch(err => console.log(err));
+};

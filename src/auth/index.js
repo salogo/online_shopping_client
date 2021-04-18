@@ -1,8 +1,8 @@
 import { API } from "../config";
 
 
+
 export const signup = user => {
-    // console.log(name,email, password);
     return fetch(`${API}/signup`, {
       method: "POST",
       headers: {
@@ -46,6 +46,7 @@ export const signup = user => {
       }
   }
 
+  
   export const signout = (next) => {
       if (typeof window !== "undefined") {
           localStorage.removeItem("jwt");// clear the local storage = remove token from local storage
@@ -60,6 +61,8 @@ export const signup = user => {
           .catch(err => console.log(err))
       }
   }
+
+
 // use isAutenticated to hide signup and signin when YOU ARE login or hide signout if not loged in
   export const isAuthenticated = () => {
       if(typeof window == "undefined") {

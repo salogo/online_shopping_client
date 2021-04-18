@@ -119,3 +119,32 @@ export const createOrder = (userId, token, createOrderData) => {
       })
       .catch(err => console.log(err));
 };
+
+
+
+export const createReview = (productId,review, token) => {
+    return fetch(`http://localhost:8000/product/review/${productId}`, {
+      method: "POST",
+      headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+         // Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(review)
+  })
+      .then(response => {
+          return response.json();
+      })
+      .catch(err => console.log(err));
+  
+  }
+
+export const readReview = () => {
+  return fetch(`${API}/reviews"`, {
+    method: "GET"
+  })
+  .then(response => {
+    return response.json();
+  })
+  .catch(err => console.log(err));
+};

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import Layout from "./Layout";
 import { getProducts } from "./apiCore";
 import Card from "./Card";
@@ -17,6 +17,7 @@ const Home = () => {
             if (data.error) {
                 setError(data.error)
             } else {
+
                 setProductsBySell(data)
             }
         })
@@ -49,6 +50,29 @@ const Home = () => {
         )
     }
 
+const arrival = () => {
+
+   return <div className="row">
+    <h2 className="mb-4">New Arrival</h2> 
+
+        {productsByArrival.map((product, i) => (
+            <div key={i} className="col-4 mb-6">
+                <Card product={product} />
+            </div>
+        ))}
+    </div>
+        }
+const best_sellers = () => {
+    return  <Fragment>  <h2 className="mb-4">Best Sellers</h2>
+    <div className="row">
+        {productsBySell.map((product, i) => (
+            <div key={i} className="col-4 mb-6">
+                <Card product={product} />
+            </div>
+        ))}
+    </div>
+    </Fragment>
+}        
     return (
         <Layout title="" description="ZAKARIA SALOGO FULL STACK DEVELOPER" className="container-fluid text-primary ">
             <Scroll>
@@ -57,23 +81,9 @@ const Home = () => {
 
                 <Search />
 
-                <h2 className="mb-4">New Arrival</h2>
-                <div className="row">
-                    {productsByArrival.map((product, i) => (
-                        <div key={i} className="col-4 mb-6">
-                            <Card product={product} />
-                        </div>
-                    ))}
-                </div>
+                    {!arrival() ? "Loding..." : arrival() }
+                    {!best_sellers()? "Loding..." : best_sellers()}            
 
-                <h2 className="mb-4">Best Sellers</h2>
-                <div className="row">
-                    {productsBySell.map((product, i) => (
-                        <div key={i} className="col-4 mb-6">
-                            <Card product={product} />
-                        </div>
-                    ))}
-                </div>
             </Scroll>
 
         </Layout>
