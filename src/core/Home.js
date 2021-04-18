@@ -81,8 +81,8 @@ const best_sellers = () => {
 
                 <Search />
 
-                    {!arrival() ? "Loding..." : arrival() }
-                    {!best_sellers()? "Loding..." : best_sellers()}            
+                    {!arrival() ? <strong> "Loding..." </strong> : arrival() }
+                    {!best_sellers() ? <strong> "Loding..." </strong>: best_sellers()}            
 
             </Scroll>
 
