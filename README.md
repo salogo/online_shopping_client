@@ -11,7 +11,6 @@ Built with Javascript, React,CSS, Bootstrap, Node, Express, MongoDB
 Live : http://proud-ground.surge.sh/
 
 #
-
 Demo: https://www.youtube.com/watch?v=fDa9gjqLN_0
 
 #
